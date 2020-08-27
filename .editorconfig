@@ -9,7 +9,7 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 
-[*.{css,scss,less,sass,json,eslintrc,eslintignore,editorconfig}]
+[*.{css,scss,less,sass}]
 indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
