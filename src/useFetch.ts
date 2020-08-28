@@ -6,6 +6,7 @@ import {
     FETCH_ERROR,
     IApiData,
 } from "./models.d";
+import { excludeApi } from "./config";
 
 const useFetch = (url: string, dispatch: React.Dispatch<QuizAction>): void => {
     useEffect(() => {
@@ -14,7 +15,10 @@ const useFetch = (url: string, dispatch: React.Dispatch<QuizAction>): void => {
         const fetchUrl = async () => {
             try {
                 let result: IApiData;
-                if (process.env.NODE_ENV === "production") {
+                if (
+                    process.env.NODE_ENV === "production" &&
+                    !excludeApi.includes(window.location.hostname)
+                ) {
                     const root = document.getElementById("root");
                     const apiUrl = root?.dataset.api;
                     if (!apiUrl) {
