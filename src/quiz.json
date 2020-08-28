@@ -52,19 +52,23 @@
         "results": [
             {
                 "score": 0,
-                "text": "Leider haben Sie keine Frage richtig beantwortet"
+                "text": "Du hast alle Fragen falsch beantwortet. Wir empfehlen dir, die Änderung noch mal zu studieren bevor du sie als gelesen und verstanden quittierst."
+            },
+            {
+                "score": 10,
+                "text": "Leider hast du die Mehrheit der Fragen falsch beantwortet. Wir empfehlen dir, die Änderung noch mal zu studieren bevor du sie als gelesen und verstanden bestätigst."
             },
             {
                 "score": 50,
-                "text": "Sie haben %%% der Fragen richtig beantwortet"
+                "text": "Du hast Rund die Hälfte aller Fragen richtig beantwortet. Wir empfehlen dir, die Änderung noch mal zu studieren bevor du sie als gelesen und verstanden bestätigst."
             },
             {
-                "score": 75,
-                "text": "Sehr gut! Sie haben %%% der Fragen richtig beantwortet"
+                "score": 70,
+                "text": "Du hast die meisten Fragen richtig beantwortet. Hast Du noch Unsicherheiten? Dann kannst du dir die Änderung nochmals ansehen. Vergiss nicht die Änderung als gelesen und verstanden zu bestätigen."
             },
             {
                 "score": 100,
-                "text": "Gratulation! Sie haben alle Frage richtig beantwortet"
+                "text": "Bravo, du hast alle Fragen richtig beantwortet. Vergiss nicht die Änderung als gelesen und verstanden zu bestätigen."
             }
         ]
     }

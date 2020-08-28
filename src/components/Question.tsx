@@ -1,23 +1,12 @@
 import React from "react";
-import { IQuestion, IAnswer } from "../models.d";
+import { IQuestion } from "../models.d";
 import Answer from "./Answer";
+import { isCorrectlyAnswered } from "../helpers/helpers";
 
 interface Props extends IQuestion {
     toggleAnswer: (id: number) => void;
     showResults: boolean;
 }
-
-const isCorrectlyAnswered = (answers: IAnswer[]): boolean => {
-    let isCorrect = true;
-
-    answers.forEach((answer) => {
-        if (answer.checked !== answer.correct) {
-            isCorrect = false;
-        }
-    });
-
-    return isCorrect;
-};
 
 const getQuestionClassNames = (
     showResults: boolean,
@@ -57,7 +46,7 @@ const Question: React.FC<Props> = ({
                 {title}
                 {showResults && (isCorrect ? <Correct /> : <Incorrect />)}
             </h3>
-            <p>{text}</p>
+            <div dangerouslySetInnerHTML={{ __html: text }} />
             <ol>
                 {answers.map((answer) => (
                     <li key={answer.id}>

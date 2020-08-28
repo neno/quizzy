@@ -54,7 +54,7 @@ const Answer: React.FC<Props> = memo(
                 ) : (
                     <Checkbox />
                 )}
-                {title} {correct ? " - (correct)" : " - (incorrect)"}
+                {title}
             </label>
         );
     }

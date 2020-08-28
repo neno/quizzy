@@ -1,9 +1,10 @@
 import React, { useReducer, FormEventHandler } from "react";
+import { TOGGLE_ANSWER, SHOW_RESULTS, RESET_QUIZ } from "../models.d";
+import { apiEndpoint } from "../config";
 import reducer, { INITIAL_STATE } from "../reducer";
 import useFetch from "../useFetch";
-import { apiEndpoint } from "../config";
 import Question from "./Question";
-import { TOGGLE_ANSWER, SHOW_RESULTS, RESET_QUIZ } from "../models.d";
+import Result from "./Result";
 
 const App: React.FC = () => {
     const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
@@ -59,6 +60,12 @@ const App: React.FC = () => {
                     </button>
                 </div>
             </form>
+            {state.showResults && (
+                <Result
+                    questions={state.quiz.questions}
+                    results={state.quiz.results}
+                />
+            )}
         </article>
     ) : (
         <div>Loading…</div>

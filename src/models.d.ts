@@ -30,7 +30,8 @@ export interface IAnswer {
 }
 
 export interface IResult {
-    [key: number]: string;
+    score: number;
+    text: string;
 }
 
 export interface IApiData {
