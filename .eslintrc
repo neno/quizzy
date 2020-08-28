@@ -45,7 +45,6 @@
             }
         ],
         "@typescript-eslint/no-use-before-define": "off",
-        "arrow-parens": ["error", "as-needed"],
         "class-methods-use-this": "off",
         "func-names": "off",
         "indent": ["error", 4],
