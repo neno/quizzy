@@ -11,7 +11,11 @@ const App: React.FC = () => {
         return <div>{state.error}</div>;
     }
 
-    return <div>Quiz</div>;
+    return state.quiz ? (
+        <div>{JSON.stringify(state.quiz, null, 2)}</div>
+    ) : (
+        <div>Loading…</div>
+    );
 };
 
 export default App;
