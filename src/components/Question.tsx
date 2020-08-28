@@ -1,10 +1,37 @@
 import React from "react";
-import { IQuestion } from "../models.d";
+import { IQuestion, IAnswer } from "../models.d";
 import Answer from "./Answer";
 
 interface Props extends IQuestion {
     toggleAnswer: (id: number) => void;
+    showResults: boolean;
 }
+
+const isCorrectlyAnswered = (answers: IAnswer[]): boolean => {
+    let isCorrect = true;
+
+    answers.forEach((answer) => {
+        if (answer.checked !== answer.correct) {
+            isCorrect = false;
+        }
+    });
+
+    return isCorrect;
+};
+
+const getQuestionClassNames = (
+    showResults: boolean,
+    isCorrect: boolean
+): string => {
+    let questionClassNames = "o-question";
+    if (showResults) {
+        questionClassNames += ` o-question--${
+            isCorrect ? "correct" : "incorrect"
+        }`;
+    }
+
+    return questionClassNames;
+};
 
 const Question: React.FC<Props> = ({
     id,
@@ -13,12 +40,25 @@ const Question: React.FC<Props> = ({
     text,
     answers,
     toggleAnswer,
+    showResults,
 }) => {
+    const Correct = () => (
+        <span dangerouslySetInnerHTML={{ __html: "&#10003;" }} />
+    );
+    const Incorrect = () => (
+        <span dangerouslySetInnerHTML={{ __html: "&#10005;" }} />
+    );
+
+    const isCorrect = isCorrectlyAnswered(answers);
+
     return (
-        <div>
-            <h3>{title}</h3>
+        <div className={getQuestionClassNames(showResults, isCorrect)}>
+            <h3>
+                {title}
+                {showResults && (isCorrect ? <Correct /> : <Incorrect />)}
+            </h3>
             <p>{text}</p>
-            <ul>
+            <ol>
                 {answers.map((answer) => (
                     <li key={answer.id}>
                         <Answer
@@ -29,10 +69,11 @@ const Question: React.FC<Props> = ({
                             correct={answer.correct}
                             checked={answer.checked}
                             toggleAnswer={toggleAnswer}
+                            showResults={showResults}
                         />
                     </li>
                 ))}
-            </ul>
+            </ol>
         </div>
     );
 };

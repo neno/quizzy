@@ -1,7 +1,9 @@
 export interface IState {
+    quizReset: IQuiz | null;
     quiz: IQuiz | null;
     loading: boolean;
     error: string | null;
+    showResults: boolean;
 }
 
 export interface IQuiz {
@@ -36,12 +38,16 @@ export interface IApiData {
 }
 
 export const TOGGLE_ANSWER = "TOGGLE_ANSWER";
+export const SHOW_RESULTS = "SHOW_RESULTS";
+export const RESET_QUIZ = "RESET_QUIZ";
 export const FETCH_LOADING = "FETCH_LOADING";
 export const FETCH_RESPONSE_COMPLETE = "FETCH_RESPONSE_COMPLETE";
 export const FETCH_ERROR = "FETCH_ERROR";
 
 export type QuizAction =
     | { type: typeof TOGGLE_ANSWER; payload: { id: number } }
+    | { type: typeof SHOW_RESULTS }
+    | { type: typeof RESET_QUIZ }
     | { type: typeof FETCH_LOADING }
     | { type: typeof FETCH_RESPONSE_COMPLETE; payload: { result: IApiData } }
     | { type: typeof FETCH_ERROR; payload: { error: string } };

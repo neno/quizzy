@@ -4,6 +4,7 @@ import { IAnswer } from "../models.d";
 interface Props extends IAnswer {
     questionId: number;
     questionType: string;
+    showResults: boolean;
     toggleAnswer: (id: number) => void;
 }
 
@@ -16,6 +17,7 @@ const Answer: React.FC<Props> = memo(
         correct,
         checked,
         toggleAnswer,
+        showResults,
     }) => {
         const RadioButton = () => (
             <input
@@ -24,6 +26,7 @@ const Answer: React.FC<Props> = memo(
                 id={`answer-${id}`}
                 checked={checked}
                 onChange={() => toggleAnswer(id)}
+                disabled={showResults}
             />
         );
         const Checkbox = () => (
@@ -33,11 +36,19 @@ const Answer: React.FC<Props> = memo(
                 id={`answer-${id}`}
                 checked={checked}
                 onChange={() => toggleAnswer(id)}
+                disabled={showResults}
             />
         );
 
+        let labelClassNames = `a-quiz-answer a-quiz-answer--${questionType}`;
+        if (showResults) {
+            labelClassNames += correct
+                ? " a-quiz-answer--correct"
+                : " a-quiz-answer--incorrect";
+        }
+
         return (
-            <label htmlFor={`answer-${id}`}>
+            <label htmlFor={`answer-${id}`} className={labelClassNames}>
                 {questionType === "single-choice" ? (
                     <RadioButton />
                 ) : (
