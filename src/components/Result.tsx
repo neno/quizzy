@@ -25,7 +25,11 @@ const evaluate = (results: IResult[], score: number) => {
 const Result: React.FC<Props> = ({ results, questions }) => {
     const score = getScore(questions);
     const res = evaluate(results, score);
-    return <div>{res.text}</div>;
+    return (
+        <p aria-live="assertive" role="status">
+            {res.text}
+        </p>
+    );
 };
 
 export default Result;

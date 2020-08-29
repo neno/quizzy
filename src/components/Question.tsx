@@ -41,11 +41,11 @@ const Question: React.FC<Props> = ({
     const isCorrect = isCorrectlyAnswered(answers);
 
     return (
-        <div className={getQuestionClassNames(showResults, isCorrect)}>
-            <h3>
+        <fieldset className={getQuestionClassNames(showResults, isCorrect)}>
+            <legend>
                 {title}
                 {showResults && (isCorrect ? <Correct /> : <Incorrect />)}
-            </h3>
+            </legend>
             <div dangerouslySetInnerHTML={{ __html: text }} />
             <ol>
                 {answers.map((answer) => (
@@ -63,7 +63,7 @@ const Question: React.FC<Props> = ({
                     </li>
                 ))}
             </ol>
-        </div>
+        </fieldset>
     );
 };
 

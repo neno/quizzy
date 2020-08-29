@@ -38,34 +38,34 @@ const App: React.FC = () => {
         <article>
             <h1>{state.quiz.title}</h1>
             <form action="#" onSubmit={handleSubmit}>
-                <ol>
-                    {state.quiz.questions.map((question) => (
-                        <li key={question.id}>
-                            <Question
-                                id={question.id}
-                                questionType={question.questionType}
-                                title={question.title}
-                                text={question.text}
-                                answers={question.answers}
-                                toggleAnswer={toggleAnswer}
-                                showResults={state.showResults}
-                            />
-                        </li>
-                    ))}
-                </ol>
-                <div>
+                {state.quiz.questions.map((question) => (
+                    <div className="t-quiz__questions" key={question.id}>
+                        <Question
+                            id={question.id}
+                            questionType={question.questionType}
+                            title={question.title}
+                            text={question.text}
+                            answers={question.answers}
+                            toggleAnswer={toggleAnswer}
+                            showResults={state.showResults}
+                        />
+                    </div>
+                ))}
+                <div className="t-quiz__actions">
                     <button type="submit">Submit</button>
                     <button type="button" onClick={handleReset}>
                         Reset
                     </button>
                 </div>
             </form>
-            {state.showResults && (
-                <Result
-                    questions={state.quiz.questions}
-                    results={state.quiz.results}
-                />
-            )}
+            <div className="t-quiz__results">
+                {state.showResults && (
+                    <Result
+                        questions={state.quiz.questions}
+                        results={state.quiz.results}
+                    />
+                )}
+            </div>
         </article>
     ) : (
         <div>Loading…</div>
