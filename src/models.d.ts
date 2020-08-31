@@ -52,3 +52,10 @@ export type QuizAction =
     | { type: typeof FETCH_LOADING }
     | { type: typeof FETCH_RESPONSE_COMPLETE; payload: { result: IApiData } }
     | { type: typeof FETCH_ERROR; payload: { error: string } };
+
+export interface AnswerProps extends IAnswer {
+    questionId: number;
+    questionType: string;
+    showResults: boolean;
+    toggleAnswer: (id: number) => void;
+}

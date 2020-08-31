@@ -1,14 +1,7 @@
 import React, { memo } from "react";
-import { IAnswer } from "../models.d";
+import { AnswerProps } from "../models.d";
 
-interface Props extends IAnswer {
-    questionId: number;
-    questionType: string;
-    showResults: boolean;
-    toggleAnswer: (id: number) => void;
-}
-
-const Answer: React.FC<Props> = memo(
+const Answer: React.FC<AnswerProps> = memo(
     ({
         id,
         questionId,
