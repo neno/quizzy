@@ -22,6 +22,8 @@ const getQuestionClassNames = (
     return questionClassNames;
 };
 
+/* eslint-disable react/no-danger */
+
 const Question: React.FC<Props> = ({
     id,
     questionType,
